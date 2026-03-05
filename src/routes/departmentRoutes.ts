@@ -1,5 +1,6 @@
 import { Router } from "express"
 import sessionsRoutes from './sessionRoutes.ts'
+import { departmentAttendanceRouter } from "./attendanceRoutes.ts"
 
 const departmentsRouter = Router()
 
@@ -52,6 +53,7 @@ departmentsRouter.get('/:deptId/users', (req, res) => {
 
 // mounting sessions
 departmentsRouter.use('/:deptId/sessions', sessionsRoutes)
+departmentsRouter.use('/:deptId/attendance', departmentAttendanceRouter)
 
 export { departmentsRouter }
 export default departmentsRouter

@@ -2,6 +2,8 @@ import express from 'express'
 import authRouter from './routes/authRoutes.ts'
 import profileRouter from './routes/profileRoutes.ts'
 import usersRouter from './routes/userRoutes.ts'
+import departmentsRouter from './routes/departmentRoutes.ts'
+import { attendanceRootRouter } from './routes/attendanceRoutes.ts'
 
 const app = express()
 
@@ -17,7 +19,8 @@ app.use('/api/auth', authRouter)
 app.use('/me', profileRouter)
 app.use('/api/users', usersRouter)
 
-app.use('/api/departments')
+app.use('/api/departments',departmentsRouter)
+app.use('/api/attendance', attendanceRootRouter)
 
 
 

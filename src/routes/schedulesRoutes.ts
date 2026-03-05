@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import type { Request, Response } from 'express'
+import scheduleAttendanceRouter from './attendanceRoutes.ts'
 
 // // sth like 
 // GET    /schedules/:scheduleId/attendance
@@ -95,6 +96,8 @@ schedulesRouter.post('/generate-recurring', (req: Request<Params>, res:Response)
         // access: 'Admin or department manager only'
     })
 })
+
+schedulesRouter.use('/:scheduleId/attendance', scheduleAttendanceRouter)
 
 export {schedulesRouter}
 export default schedulesRouter

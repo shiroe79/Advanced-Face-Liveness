@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import type { Request, Response } from 'express'
 import schedulesRouter from './schedulesRoutes.ts'
+import enrollmentsRouter from './enrollmentRoutes.ts'
 
 const sessionsRouter = Router({ mergeParams: true })
 
@@ -87,6 +88,7 @@ sessionsRootRouter.get('/assigned', (req, res) => {
 
 
 sessionsRouter.use('/:sessionId/schedules', schedulesRouter)
+sessionsRouter.use('/:sessionId/enrollments', enrollmentsRouter)
 
 export { sessionsRouter, sessionsRootRouter }
 export default sessionsRouter
