@@ -1,5 +1,7 @@
 import express from 'express'
-import { router as authRouter } from './routes/authRoutes.ts'
+import authRouter from './routes/authRoutes.ts'
+import profileRouter from './routes/profileRoutes.ts'
+import usersRouter from './routes/userRoutes.ts'
 
 const app = express()
 
@@ -12,6 +14,9 @@ app.get('/health' , (req, res) =>{
 })
 
 app.use('/api/auth', authRouter)
+app.use('/me', profileRouter)
+app.use('/api/users', usersRouter)
+
 
 
 export {app}
