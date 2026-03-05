@@ -19,3 +19,7 @@ router.post('/logout', (req, res) => {
 router.post('/refresh', (req, res) => {
     res.status(201).json({message: 'Token refreshed'})
 })
+
+
+export {router}
+export default router

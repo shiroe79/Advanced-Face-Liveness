@@ -1,5 +1,5 @@
 import express from 'express'
-
+import { router as authRouter } from './routes/authRoutes.ts'
 
 const app = express()
 
@@ -10,6 +10,8 @@ app.get('/health' , (req, res) =>{
         timestamp: new Date().toISOString(),
     })
 })
+
+app.use('/api/auth', authRouter)
 
 
 export {app}
