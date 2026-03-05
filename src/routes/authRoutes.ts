@@ -21,5 +21,4 @@ router.post('/refresh', (req, res) => {
 })
 
 
-export {router}
 export default router

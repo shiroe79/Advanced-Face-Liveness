@@ -17,6 +17,8 @@ app.use('/api/auth', authRouter)
 app.use('/me', profileRouter)
 app.use('/api/users', usersRouter)
 
+app.use('/api/departments')
+
 
 
 export {app}
