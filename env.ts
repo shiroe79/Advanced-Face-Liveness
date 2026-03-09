@@ -25,15 +25,15 @@ const envSchema = z.object({
     PORT: z.coerce.number().positive().default(3005),
     HOST: z.string().default('localhost'),
 
-    // // Database
-    // DATABASE_URL: z.string().startsWith('postgresql://'),
+    // Database
+    DATABASE_URL: z.string().startsWith('postgresql://'),
 
-    // // JWT & Authentication
-    // JWT_SECRET: z.string().min(32, 'Must be 32 chars long'),
-    // JWT_EXPIRES_IN: z.string().default('7d'),
+    // JWT & Authentication
+    JWT_SECRET: z.string().min(32, 'Must be 32 chars long'),
+    JWT_EXPIRES_IN: z.string().default('7d'),
     
-    // // secruity 
-    // BCRYPT_ROUNDS: z.coerce.number().min(10).max(20).default(12),
+    // secruity 
+    BCRYPT_ROUNDS: z.coerce.number().min(10).max(20).default(12),
 })
 
 // Type inference from schema
