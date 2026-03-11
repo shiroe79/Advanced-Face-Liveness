@@ -3,6 +3,7 @@ import authRouter from './routes/authRoutes.ts'
 import profileRouter from './routes/profileRoutes.ts'
 import usersRouter from './routes/userRoutes.ts'
 import departmentsRouter from './routes/departmentRoutes.ts'
+import rolesRouter from './routes/roleRoutes.ts'
 import { attendanceRootRouter } from './routes/attendanceRoutes.ts'
 import { isTest } from '../env.ts'
 import cors from 'cors'
@@ -35,7 +36,7 @@ app.use('/api/users', usersRouter)
 
 app.use('/api/departments',departmentsRouter)
 app.use('/api/attendance', attendanceRootRouter)
-
+app.use('/api/roles', rolesRouter)
 
 
 export {app}

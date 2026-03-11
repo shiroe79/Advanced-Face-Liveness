@@ -6,6 +6,7 @@ import type { JWTPayload } from 'jose'
 export interface JwtPayload extends JWTPayload {
     id: string
     email: string
+    role: string
 }
 
 export const generateToken = (payload: JwtPayload) => {
