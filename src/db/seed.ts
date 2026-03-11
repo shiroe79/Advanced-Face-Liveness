@@ -52,17 +52,17 @@ async function seed() {
 
     const usersData = [
       // Admin
-      { email: 'admin@system.et', passwordHash: await hashPassword('Adm!n2026#'), firstName: 'Elias',   lastName: 'Girma',   roleId: ADMIN,   isActive: true, updatedAt: new Date() },
+      { email: 'admin@system.et', password: await hashPassword('Adm!n2026#'), firstName: 'Elias',   lastName: 'Girma',   roleId: ADMIN,   isActive: true, updatedAt: new Date() },
       // Managers
-      { email: 'manager.cs@uni.et',   passwordHash: await hashPassword('CsM2026!'), firstName: 'Abebe',  lastName: 'Kebede',  roleId: MANAGER, isActive: true, updatedAt: new Date() },
-      { email: 'manager.ece@uni.et',  passwordHash: await hashPassword('EceM2026!'), firstName: 'Meron',  lastName: 'Assefa',  roleId: MANAGER, isActive: true, updatedAt: new Date() },
+      { email: 'manager.cs@uni.et',   password: await hashPassword('CsM2026!'), firstName: 'Abebe',  lastName: 'Kebede',  roleId: MANAGER, isActive: true, updatedAt: new Date() },
+      { email: 'manager.ece@uni.et',  password: await hashPassword('EceM2026!'), firstName: 'Meron',  lastName: 'Assefa',  roleId: MANAGER, isActive: true, updatedAt: new Date() },
       // Coordinators
-      { email: 'coord.cs101@uni.et',  passwordHash: await hashPassword('Cs101!'), firstName: 'Sara',   lastName: 'Alemu',   roleId: COORDINATOR, isActive: true, updatedAt: new Date() },
-      { email: 'coord.ece202@uni.et', passwordHash: await hashPassword('Ece202!'), firstName: 'Yonas',  lastName: 'Tadesse', roleId: COORDINATOR, isActive: true, updatedAt: new Date() },
+      { email: 'coord.cs101@uni.et',  password: await hashPassword('Cs101!'), firstName: 'Sara',   lastName: 'Alemu',   roleId: COORDINATOR, isActive: true, updatedAt: new Date() },
+      { email: 'coord.ece202@uni.et', password: await hashPassword('Ece202!'), firstName: 'Yonas',  lastName: 'Tadesse', roleId: COORDINATOR, isActive: true, updatedAt: new Date() },
       // Students
-      { email: 'ugr-001@uni.et',      passwordHash: await hashPassword('pass123'), firstName: 'Dawit',  lastName: 'Tesfaye', roleId: USER, isActive: true, updatedAt: new Date() },
-      { email: 'ugr-015@uni.et',      passwordHash: await hashPassword('pass123'), firstName: 'Liya',   lastName: 'Getachew',roleId: USER, isActive: true, updatedAt: new Date() },
-      { email: 'ugr-042@uni.et',      passwordHash: await hashPassword('pass123'), firstName: 'Henok',  lastName: 'Woldie',  roleId: USER, isActive: true, updatedAt: new Date() },
+      { email: 'ugr-001@uni.et',      password: await hashPassword('pass123'), firstName: 'Dawit',  lastName: 'Tesfaye', roleId: USER, isActive: true, updatedAt: new Date() },
+      { email: 'ugr-015@uni.et',      password: await hashPassword('pass123'), firstName: 'Liya',   lastName: 'Getachew',roleId: USER, isActive: true, updatedAt: new Date() },
+      { email: 'ugr-042@uni.et',      password: await hashPassword('pass123'), firstName: 'Henok',  lastName: 'Woldie',  roleId: USER, isActive: true, updatedAt: new Date() },
     ];
 
     const insertedUsers = await tx

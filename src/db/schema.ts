@@ -32,7 +32,7 @@ export const rolesRelations = relations(roles, ({ many }) => ({
 export const users = pgTable('users',{ 
     id: uuid('id').primaryKey().defaultRandom(),
     email: varchar('email', { length: 255 }).notNull().unique(),
-    passwordHash: varchar('password_hash', { length: 255 }).notNull(),
+    password: varchar('password', { length: 255 }).notNull(),
     firstName: varchar('first_name', { length: 100 }).notNull(),
     lastName: varchar('last_name', { length: 100 }).notNull(),
     roleId: uuid('role_id')
