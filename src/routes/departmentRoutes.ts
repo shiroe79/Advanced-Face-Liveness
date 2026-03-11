@@ -1,8 +1,11 @@
 import { Router } from "express"
 import sessionsRoutes from './sessionRoutes.ts'
 import { departmentAttendanceRouter } from "./attendanceRoutes.ts"
+import { autehnticateToken } from "../middleware/auth.ts"
+
 
 const departmentsRouter = Router()
+departmentsRouter.use(autehnticateToken)
 
 // List all departments (admin only)
 departmentsRouter.get('/', (req, res) => {

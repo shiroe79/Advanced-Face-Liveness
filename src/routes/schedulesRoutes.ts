@@ -2,10 +2,6 @@ import { Router } from 'express'
 import type { Request, Response } from 'express'
 import scheduleAttendanceRouter from './attendanceRoutes.ts'
 
-// // sth like 
-// GET    /schedules/:scheduleId/attendance
-// POST   /schedules/:scheduleId/attendance   (for check‑in)
-// PUT    /schedules/:scheduleId/attendance/:attendanceId   (for check‑out or updates)
 
 const schedulesRouter = Router({mergeParams: true})
 

@@ -1,7 +1,12 @@
 import { Router } from 'express'
+import { autehnticateToken } from '../middleware/auth.ts'
 
 const router = Router()
 
+// JWT auth
+router.use(autehnticateToken)
+
+// route - /me
 router.get('/', (req, res) => {
     res.status(200).json({message: "Returns current user profile"})
 })

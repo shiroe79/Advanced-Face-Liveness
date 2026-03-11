@@ -29,6 +29,7 @@ app.get('/health' , (req, res) =>{
 })
 
 app.use('/api/auth', authRouter)
+
 app.use('/me', profileRouter)
 app.use('/api/users', usersRouter)
 
