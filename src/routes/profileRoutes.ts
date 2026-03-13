@@ -1,10 +1,10 @@
 import { Router } from 'express'
-import { autehnticateToken } from '../middleware/auth.ts'
+import { authenticateToken } from '../middleware/auth.ts'
 
 const router = Router()
 
 // JWT auth
-router.use(autehnticateToken)
+router.use(authenticateToken)
 
 // route - /me
 router.get('/', (req, res) => {

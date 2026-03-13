@@ -3,6 +3,8 @@ import { login, register } from '../controllers/authController.ts'
 import { validateBody } from '../middleware/validation.ts'
 import { insertUserSchema } from '../db/schema.ts'
 import {z} from 'zod'
+import { authorize } from '../middleware/authorize.ts'
+import { authenticateToken } from '../middleware/auth.ts'
 
 const loginSchema = z.object({
     email: z.email('Invalid email'),
@@ -13,7 +15,7 @@ const loginSchema = z.object({
 const router = Router()
 
 // Auth routes
-router.post('/register', validateBody(insertUserSchema) , register)
+router.post('/register', validateBody(insertUserSchema), authenticateToken, authorize('admin'), register)
 
 router.post('/login', validateBody(loginSchema), login)
 

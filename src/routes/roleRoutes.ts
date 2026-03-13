@@ -1,13 +1,14 @@
 import { Router } from 'express'
 import * as roleController from '../controllers/roles.controller.ts'
-import { autehnticateToken } from '../middleware/auth.ts'
+import { authenticateToken } from '../middleware/auth.ts'
+import { authorize } from '../middleware/authorize.ts'
 
 
 const router = Router()
 
-router.use(autehnticateToken)
+router.use(authenticateToken)
 
-router.get('/', roleController.getAllRoles)
+router.get('/', authorize('admin') ,roleController.getAllRoles)
 
 router.get('/:id', roleController.getRoleById)
 

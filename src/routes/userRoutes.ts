@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import { autehnticateToken } from '../middleware/auth.ts'
+import { authenticateToken } from '../middleware/auth.ts'
 
 const usersRouter = Router()
 
-usersRouter.use(autehnticateToken)
+usersRouter.use(authenticateToken)
 
 // get all users and might add filter here
 usersRouter.get('/', (req, res) => {

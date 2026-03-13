@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express'
 import db from '../db/index.ts'
-import { users } from '../db/schema.ts'
+import { users, roles } from '../db/schema.ts'
 import type { NewUser } from '../db/schema.ts'
 import { generateToken } from '../utils/jwt.ts'
 import { comparepasswords, hashPassword } from '../utils/password.ts'
@@ -14,13 +14,22 @@ export const register = async (req: Request<any,any,NewUser>, res: Response) => 
     const existingUser = await db.query.users.findFirst({
       where: eq(users.email, req.body.email)
     })
-
     if (existingUser) {
       return res.status(409).json({ error: 'User with this email already exists' })
     }
+
+    // Checking if the assigned role exists
+    const [roleExists] = await db
+      .select()
+      .from(roles)
+      .where(eq(roles.id, req.body.roleId))
+      .limit(1);
+
+    if (!roleExists) {
+      return res.status(400).json({ error: 'Selected role does not exist' });
+    }
     const passwordHash = await hashPassword(req.body.password)
 
-    // console.log(req.body)
     const [user] = await db
     .insert(users)
     .values({
@@ -38,13 +47,14 @@ export const register = async (req: Request<any,any,NewUser>, res: Response) => 
       isActive: users.isActive,
     })
 
+
     const token = await generateToken({
       id: user.id,
       email: user.email,
-      role: user.roleId
+      role: roleExists.name
     })
     return res.status(201).json({
-      message: 'User created',
+      message: 'User created Successfully',
       user,
       token,
     })
@@ -58,13 +68,21 @@ export const register = async (req: Request<any,any,NewUser>, res: Response) => 
   }
 }
 
+
+
+
 export const login = async (req: Request, res: Response ) =>{
   try {
     const {email, password} = req.body
     const user = await db.query.users.findFirst({
-      where: eq(users.email, email)
+      where: eq(users.email, email),
+      with: {
+        role: true,
+      },
     })
 
+    console.log(user.role.name)
+    console.log(req.body)
     if (!user) {
       return res.status(401).json({ error:" Invalid creidentials "})
     }
@@ -78,7 +96,7 @@ export const login = async (req: Request, res: Response ) =>{
     const token = await generateToken({
       id: user.id,
       email: user.email,
-      role: user.roles
+      role: user.role.name
     })
 
     // // to remove just password instead of listing the whole feilds 

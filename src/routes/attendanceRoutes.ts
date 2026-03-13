@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import type { Response, Request } from 'express'
-import { autehnticateToken } from '../middleware/auth.ts'
+import { authenticateToken } from '../middleware/auth.ts'
 
 const scheduleAttendanceRouter = Router({ mergeParams: true })
 
@@ -73,7 +73,7 @@ departmentAttendanceRouter.get('/', (req: Request<Params>, res:Response) => {
 //  For admin to modify single attendance
 const attendanceRootRouter = Router()
 
-attendanceRootRouter.use(autehnticateToken)
+attendanceRootRouter.use(authenticateToken)
 
 // PATCH /api/attendance/:attendanceId - Admin forced modification (highly restricted)
 attendanceRootRouter.patch('/:attendanceId', (req, res) => {
