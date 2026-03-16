@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { authenticateToken } from '../middleware/auth.ts'
+import * as profileController from '../controllers/profile.controller.ts'
 
 const router = Router()
 
@@ -7,13 +8,10 @@ const router = Router()
 router.use(authenticateToken)
 
 // route - /me
-router.get('/', (req, res) => {
-    res.status(200).json({message: "Returns current user profile"})
-})
+router.get('/', profileController.getUserData)
 
-router.patch('/', (req, res) => {
-    res.json({ message: "update profile"})
-})
+// this works but we need to set security measures on what can be updated by user cause i just updated my role 
+router.patch('/', profileController.updateProfile)
 
 router.get('/attendance', (req, res) => {
     res.status(200).json({ message: "Returns attendace history"})
